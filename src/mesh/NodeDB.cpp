@@ -4,7 +4,7 @@
 #endif
 #include "../detect/ScanI2C.h"
 #include "Channels.h"
-#include "CryptoEngine.h"
+#include "crypto/CryptoEngine.h"
 #include "Default.h"
 #include "FSCommon.h"
 #include "MeshRadio.h"

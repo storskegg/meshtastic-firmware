@@ -1,6 +1,6 @@
 #include "Router.h"
 #include "Channels.h"
-#include "CryptoEngine.h"
+#include "crypto/CryptoEngine.h"
 #include "MeshRadio.h"
 #include "MeshService.h"
 #include "NodeDB.h"
