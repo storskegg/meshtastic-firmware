@@ -1,5 +1,6 @@
 #pragma once
-#include "CryptoEngine.h"
+#include "crypto/CryptoEngine.h"
+
 #if !MESHTASTIC_EXCLUDE_PKI
 
 int aes_ccm_ae(const uint8_t *key, size_t key_len, const uint8_t *nonce, size_t M, const uint8_t *plain, size_t plain_len,

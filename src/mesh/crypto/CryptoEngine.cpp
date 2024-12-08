@@ -1,12 +1,12 @@
-#include "CryptoEngine.h"
+#include "crypto/CryptoEngine.h"
 // #include "NodeDB.h"
 #include "architecture.h"
 
 #if !(MESHTASTIC_EXCLUDE_PKI)
-#include "aes-ccm.h"
+#include "symmetric/aes/aes-ccm.h"
 #include "meshUtils.h"
 #include <Crypto.h>
-#include <Curve25519.h>
+#include "crypto/asymmetric/curve25519/curve25519.h"
 #include <SHA256.h>
 #if !(MESHTASTIC_EXCLUDE_PKI_KEYGEN)
 

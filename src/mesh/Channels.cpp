@@ -1,6 +1,6 @@
 #include "Channels.h"
 
-#include "CryptoEngine.h"
+#include "crypto/CryptoEngine.h"
 #include "Default.h"
 #include "DisplayFormatters.h"
 #include "NodeDB.h"

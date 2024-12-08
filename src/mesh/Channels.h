@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CryptoEngine.h"
+#include "crypto/CryptoEngine.h"
 #include "NodeDB.h"
 #include "mesh-pb-constants.h"
 #include <Arduino.h>
