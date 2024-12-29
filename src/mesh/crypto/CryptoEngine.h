@@ -25,6 +25,36 @@ struct CryptoKey {
 
 class CryptoEngine
 {
+public:
+    CryptoEngine(){}
+    virtual ~CryptoEngine(){}
+#if !(MESHTASTIC_EXCLUDE_PKI)
+#if !(MESHTASTIC_EXCLUDE_PKI_KEYGEN)
+    virtual void generateKeyPair(uint8_t *pubKey, uint8_t *privKey) = 0;
+    virtual bool regeneratePublicKey(uint8_t *pubKey, uint8_t *privKey) = 0;
+
+#endif
+    void clearKeys() = 0;
+    void setDHPrivateKey(uint8_t *_private_key) = 0;
+    virtual bool encryptCurve25519(uint32_t toNode, uint32_t fromNode, meshtastic_UserLite_public_key_t remotePublic,
+                                   uint64_t packetNum, size_t numBytes, uint8_t *bytes, uint8_t *bytesOut) = 0;
+    virtual bool decryptCurve25519(uint32_t fromNode, meshtastic_UserLite_public_key_t remotePublic, uint64_t packetNum,
+                                   size_t numBytes, uint8_t *bytes, uint8_t *bytesOut) = 0;
+    virtual bool setDHPublicKey(uint8_t *publicKey) = 0;
+    virtual void hash(uint8_t *bytes, size_t numBytes) = 0;
+    virtual void aesSetKey(const uint8_t *key, size_t key_len) = 0;
+    virtual void aesEncrypt(uint8_t *in, uint8_t *out) = 0;
+
+#endif
+
+    virtual void setKey(const CryptoKey &k) = 0;
+    virtual void encryptPacket(uint32_t fromNode, uint64_t packetId, size_t numBytes, uint8_t *bytes) = 0;
+    virtual void decrypt(uint32_t fromNode, uint64_t packetId, size_t numBytes, uint8_t *bytes) = 0;
+    virtual void encryptAESCtr(CryptoKey key, uint8_t *nonce, size_t numBytes, uint8_t *bytes) = 0;
+};
+
+class CryptoEngineStock : CryptoEngine
+{
   public:
 #if !(MESHTASTIC_EXCLUDE_PKI)
     uint8_t public_key[32] = {0};
